@@ -3,6 +3,7 @@ import React from 'react';
 const app = (props)=>(
 <div
     style = {{
+        color: 'white',
         background: props.bg
     }}
 >

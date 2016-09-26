@@ -1,4 +1,5 @@
 var path = require("path");
+
 module.exports = {
   entry: {
     app: ["./client/app/main"]
@@ -18,10 +19,7 @@ module.exports = {
       },
       {
         test: /\.jsx$/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015','react']
-        }
+        loader: 'babel'
       },
       {
         test: /\.less$/,
