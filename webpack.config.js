@@ -22,10 +22,14 @@ module.exports = {
         query: {
           presets: ['es2015','react']
         }
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.less'],
   }
 };
