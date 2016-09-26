@@ -1,7 +1,7 @@
 var path = require("path");
 module.exports = {
   entry: {
-    app: ["./client/app/main.js"]
+    app: ["./client/app/main"]
   },
   output: {
     path: path.resolve(__dirname, "client"),
@@ -11,12 +11,21 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        loader: 'babel', // 'babel-loader' is also a valid name to reference
+        loader: 'babel',
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /\.jsx$/,
+        loader: 'babel',
+        query: {
+          presets: ['es2015','react']
+        }
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   }
 };
