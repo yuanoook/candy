@@ -1,0 +1,27 @@
+{
+  "name": "candy",
+  "version": "1.0.0",
+  "description": "Light notes",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --content-base client/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://yuanoook@github.com/yuanoook/candy.git"
+  },
+  "keywords": [
+    "notes"
+  ],
+  "author": "Rango Yuan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuanoook/candy/issues"
+  },
+  "homepage": "https://github.com/yuanoook/candy#readme",
+  "devDependencies": {
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
