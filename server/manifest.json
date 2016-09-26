@@ -1,0 +1,10 @@
+{
+    "methods":{
+        "post": {
+            "/login": "login.js",
+            "/logout": "logout.js",
+            "/register": "register.js",
+            "/post": "post.js"
+        }
+    }
+}

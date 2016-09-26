@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>糖果 Candy ❤</title>
+
+    <!-- logo图标 -->
+	<link rel="apple-touch-icon-precomposed" href>
+    <link rel="shortcut icon" href>
+
+    <!-- 静态资源 -->
+    <link rel="stylesheet" href="/static/css/style.css">
+
+	<script src="/static/js/alarm.js"></script>
+    <script src="/static/js/jquery.min.js"></script>
+	<script src="/static/js/jquery.alert.js"></script>
+
+    <!-- jimu.js -->
+    <script>if(!document.addEventListener){
+        document.write('<script src="/static/js/es5.js"><\/script>');
+    }</script>
+    <script src="/static/js/jquery.jimu.js"></script>
+    <script src="/static/js/jquery.jimu.filters.js"></script>
+    <script src="/static/js/jquery.jimu.directives.js"></script>
+    <script src="/static/js/jquery.jimu.root.js"></script>
+
+    <!-- store.js -->
+    <script src="/static/js/storedb.js"></script>
+
+    <!-- app.js -->
+    <script src="/static/js/candy.filters.js"></script>
+</head>
+<body ·root>
+    <nav id="main_header" class="main-header" ·="localStorage.person|parseJSON">
+        <div ·if="name|isEmpty">
+            <span id="nav_register" class="pull-right bg-pink" ·click="|active:#register_box">注册</span>
+            <span id="nav_login" class="pull-right bg-blue" ·click="|active:#login_box">登录</span>
+        </div>
+        <div ·if="name|isNotEmpty">
+            <span class="pull-right bg-lightgray" ·click="|logout">退出</span>
+            <span ·="name" class="pull-right bg-blue over-hide"></span>
+            <span class="pull-right bg-pink" ·click="|active:#page_edit|resetEditPage">添加</span>
+        </div>
+        <div>
+            <section id="login_box" class="box full-screen">
+        		<h1 class="c-white">帐号登录</h1>
+        		<form id="form_login">
+        			<p>邮箱<input type="email" name="email"></p>
+        			<p>密码<input type="password" name="password"></p>
+        			<p>
+        				<span id="btn_login" class="btn" ·click="|login">登录</span>
+        				<span class="btn cancel ml30" ·click="|unactive:#login_box">取消</span>
+        			</p>
+        		</form>
+        	</section>
+        	<section id="register_box" class="box full-screen">
+        		<h1 class="c-white">注册帐号</h1>
+        		<form id="form_register">
+        			<p>昵称<input type="name" name="name"></p>
+        			<p>邮箱<input type="email" name="email"></p>
+        			<p>密码<input type="password" name="password"></p>
+        			<p>
+        				<span class="btn" ·click="|register">注册</span>
+        				<span class="btn cancel ml30" ·click="|unactive:#register_box">取消</span>
+        			</p>
+        		</form>
+        	</section>
+        </div>
+    </nav>
+
+    <div id="main_container" class="main-container">
+        <section id="page_topic_list" class="active">
+            <form id="findAllContents" method="post" ·="Params_findAllContents">
+                <input type="hidden" name="command" ·="command">
+                <input type="hidden" name="arg"  ·="arg">
+                <input type="hidden" name="session" ·="session">
+            </form>
+            <div id="page_topic" class="page page-topic" ·="/post" ·form="#findAllContents">
+                <div class="body" ·for="$value">
+                    <div ·each class="content follow" ·click="_id|resetEditPage|active:#page_edit">
+                        <div ·="title_1" class="title fz20 fw900"></div>
+                        <pre ·="text_1|noHTML" class="text"></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page_edit" class="page page-edit bg-lightgray">
+            <div class="over-hide show-no-data">
+                <span id="cancel_edit" class="btn cancel pull-right" ·click="|active:#page_topic_list">关闭</span>
+            </div>
+            <hr/>
+            <div class="title card">
+                <span class="delete-card hide-with-guest" ·click="|deleteCard">×</span>
+                <input class="fz20 fw900" type="text" placeholder="起一个漂亮的标题">
+            </div>
+            <div class="text card templet">
+                <span class="delete-card hide-with-guest" ·click="|deleteCard">×</span>
+                <textarea placeholder="输入一段漂亮的文字"></textarea>
+            </div>
+            <div class="text card">
+                <span class="delete-card hide-with-guest" ·click="|deleteCard">×</span>
+                <textarea placeholder="输入一段漂亮的文字"></textarea>
+            </div>
+            <div id="add_card" class="add-card mt10 hide-with-guest">
+                添加：<span type="text" ·click="|addCard">文字</span>
+            </div>
+            <hr/>
+            <div id="topublic_card" class="topublic card">
+                <span>发表到主题：</span>
+                <span class="topic templet">
+                    <input type="text" value="" placeholder="主题名称">
+                    <sup class="delete-topic hide-with-guest" ·click="deleteTopic">×</sup>
+                </span>
+                <span id="add_topic" class="btn mini-btn hide-with-guest" ·click="|addTopic">+</span>
+                <hr/>
+                <p class="mt30 mb20 pull-right hide-with-guest">
+                    <span class="public btn" ·click="|publishTopic">发表</span>
+                    <span id="content_save" class="save btn cancel ml30 hide">存稿</span>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- bg.js -->
+    <script>if(!/Mobile/i.test(navigator.userAgent)){
+        document.write('<script src="/static/js/superBg.js"><\/script>');
+    }</script>
+</body>
+</html>
