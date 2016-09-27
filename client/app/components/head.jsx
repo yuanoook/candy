@@ -28,7 +28,7 @@ var Head = React.createClass({
                 <li><Link to="/login">login</Link></li>
                 <li><Link to="/register">register</Link></li>
                 <li><Link to="/404">404</Link></li>
-                <li><a href="javascript:;" onClick={this.props.toggleNav}>Toggle</a></li>
+                <li><a href="javascript:;" onClick={this.props.toggleNav}>Theme</a></li>
             </ul>
         )
     }

@@ -1,10 +1,15 @@
-import { createStore } from 'redux'
+import { compose, createStore } from 'redux'
+import persistState from 'redux-localstorage'
+
+const enhancer = compose(
+    persistState()
+)
 
 const defaultState = {
     toggle: false
 }
 
-const store = createStore(function(state = defaultState,action){
+const reducer = (state, action) => {
     switch (action.type) {
     case 'TOGGLE':
         return Object.assign({},state,{
@@ -13,6 +18,8 @@ const store = createStore(function(state = defaultState,action){
     default:
         return state
     }
-})
+}
+
+const store = createStore(reducer, defaultState, enhancer);
 
 export { store }
