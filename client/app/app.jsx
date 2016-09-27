@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, Link, hashHistory as History } from 'react-router'
 import { Home, Article, Login, Register, NotFound } from './components'
 
 const App = React.createClass({
@@ -30,4 +30,4 @@ const routes = [
   }
 ]
 
-render(<Router history={hashHistory} routes={routes} />, document.getElementById('root'))
+render(<Router history={History} routes={routes} />, document.getElementById('root'))
