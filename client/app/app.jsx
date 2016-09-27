@@ -1,14 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, Link, hashHistory as History } from 'react-router'
-import { Home, Article, Login, Register, NotFound } from './components'
+import { Router, hashHistory as History } from 'react-router'
+import { Provider } from 'react-redux'
+import { Home, Article, Login, Register, NotFound, store } from './components'
 
 const App = React.createClass({
   render() {
     return (
-      <div>
+      <Provider store={store}>
         {this.props.children}
-      </div>
+      </Provider>
     )
   }
 })
