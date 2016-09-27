@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
-import { Home, Article, Login } from './components'
+import { Home, Article, Login, Register } from './components'
 
 const About = React.createClass({
     render:()=>(
@@ -21,8 +21,10 @@ const App = React.createClass({
         <h1>App</h1>
         {/* change the <a>s to <Link>s */}
         <ul>
+          <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/login">login</Link></li>
+          <li><Link to="/login/register">register</Link></li>
         </ul>
         {this.props.children}
       </div>
@@ -36,7 +38,11 @@ const routes = {
   indexRoute: { component: Home },
   childRoutes: [
     { path: 'about', component: About },
-    { path: 'login', component: Login },
+    { path: 'login', component: Login , childRoutes: [
+      {
+        path: 'register', component: Register
+      }
+    ]},
   ]
 }
 
