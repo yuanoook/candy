@@ -19,7 +19,7 @@ const routes = [
     component: App,
     indexRoute: { component: Home },
     childRoutes: [
-      { path: 'article', component: Article },
+      { path: 'article/:id', component: Article },
       { path: 'register', component: Register },
       { path: 'login', component: Login }
     ]
