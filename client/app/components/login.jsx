@@ -11,6 +11,11 @@ const mapDispatchToProps = (dispatch) => {
         dispatch({
             type: 'LOGIN',
             payload: {
+                promise: new Promise((resolve, reject)=>{
+                    setTimeout(function(){
+                        resolve()
+                    },1000)
+                }),
                 email: email,
                 password: password
             }
