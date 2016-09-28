@@ -6,14 +6,14 @@ const enhancer = compose(
 )
 
 const defaultState = {
-    toggle: false
+    login_ing: false
 }
 
 const reducer = (state, action) => {
     switch (action.type) {
-    case 'TOGGLE':
+    case 'LOGIN':
         return Object.assign({},state,{
-        toggle: !state.toggle
+            login_ing: true
         })
     default:
         return state
