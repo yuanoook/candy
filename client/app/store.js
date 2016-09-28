@@ -4,16 +4,15 @@ import promiseMiddleware from 'redux-promise-middleware'
 // import { list, article, login, register } from './reducers'
 import { login } from './reducers'
 
-const composeStoreWithMiddleware = applyMiddleware(
-  promiseMiddleware()
-)(createStore)
-
 const enhancer = compose(
+    applyMiddleware(
+        promiseMiddleware()
+    ),
     persistState()
 )
 
 const reducer = combineReducers({login})
 
-const store = composeStoreWithMiddleware(reducer, enhancer);
+const store = createStore(reducer, enhancer);
 
 export { store }
