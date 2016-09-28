@@ -2,7 +2,7 @@ var path = require("path");
 
 module.exports = {
   entry: {
-    app: ["./client/app/main"]
+    app: ["whatwg-fetch", "./client/app/main"]
   },
   output: {
     path: path.resolve(__dirname, "client"),

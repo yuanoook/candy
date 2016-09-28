@@ -2,7 +2,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Router, hashHistory as History } from 'react-router'
 import { Provider } from 'react-redux'
-import { Home, Article, Login, Register, NotFound, store } from './components'
+import { Home, Article, Login, Register, NotFound } from './components'
+import { store } from './store'
 
 const App = React.createClass({
   render() {

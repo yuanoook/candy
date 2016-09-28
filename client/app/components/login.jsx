@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login(e) {
+    loginSubmit(e) {
         e.preventDefault()
         const email = this.email_input.value
         const password = this.password_input.value
@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
   return {
-    login_ing: state.login_ing
+    login: state.login
   }
 }
 
@@ -30,7 +30,7 @@ var Login = React.createClass({
         return (
             <div className="login-section">
                 <SubHead />
-                <form onSubmit={this.props.login.bind(this)}>
+                <form onSubmit={this.props.loginSubmit.bind(this)}>
         			<p>
                         <label>Email</label>
                         <input type="email" name="email" required ref={(c) => this.email_input = c}/></p>
@@ -39,7 +39,7 @@ var Login = React.createClass({
                         <input type="password" name="password" required ref={(c) => this.password_input = c}/></p>
         			<p>
         			    <label></label>
-                        <button type="submit" className="long-btn">Login{this.props.login_ing ? ' ...' : ''}</button>
+                        <button type="submit" className="long-btn">Login{this.props.login.ing ? ' ...' : ''}</button>
         			</p>
         		</form>
             </div>
