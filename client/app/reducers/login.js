@@ -5,10 +5,6 @@ const defaultState = {
 
 const login = (state=defaultState, action)=>{
     switch (action.type) {
-    // case 'LOGIN':
-    //     return Object.assign({}, state, {
-    //         ing: true
-    //     })
     case 'LOGIN_PENDING':
         return Object.assign({}, state, {
             ing: true
