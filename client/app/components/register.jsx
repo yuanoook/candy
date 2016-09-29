@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginSubmit(e) {
+        registerSubmit(e) {
             e.preventDefault()
-            if (this.props.login.reg_ing) return
+            if (this.props.user.reg_ing) return
 
             const name = this.name_input.value
             const email = this.email_input.value
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        login: state.login
+        user: state.user
     }
 }
 
@@ -41,17 +41,17 @@ let Register = React.createClass({
         window.history.length ? this.context.router.goBack() : this.context.router.push('/')
     },
     componentWillReceiveProps(nextProps) {
-        // goBack if login success
-        nextProps.login && nextProps.login.user && this.goBack()
+        // goBack if register success
+        nextProps.user && nextProps.user.info && this.goBack()
     },
     shouldComponentUpdate: function(nextProps, nextState) {
-        return !(nextProps.login && nextProps.login.user)
+        return !(nextProps.user && nextProps.user.info)
     },
     render() {
         return (
-            <div className="login-section">
+            <div className="user-io-section">
                 <SubHead />
-                <form onSubmit={this.props.loginSubmit.bind(this)}>
+                <form onSubmit={this.props.registerSubmit.bind(this)}>
                     <p>
                         <label>Name</label>
                         <input type="text" required ref={(c) => this.name_input = c}/>
@@ -66,7 +66,7 @@ let Register = React.createClass({
                     </p>
                     <p>
                         <label></label>
-                        <button type="submit" className="long-btn">{this.props.login.reg_ing ? 'In ...' : 'Register'}</button>
+                        <button type="submit" className="long-btn">{this.props.user.reg_ing ? 'In ...' : 'Register'}</button>
                     </p>
                 </form>
             </div>

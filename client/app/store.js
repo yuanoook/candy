@@ -1,24 +1,24 @@
 import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
 import persistState from 'redux-localstorage'
 import promiseMiddleware from 'redux-promise-middleware'
-// import { list, article, login, register } from './reducers'
-import { login } from './reducers'
+// import { list, article, user } from './reducers'
+import { user } from './reducers'
 
 const enhancer = compose(
     applyMiddleware(
         promiseMiddleware()
     ),
     persistState([
-        'login'
+        'user'
     ], {
         key: 'redux-loc',
         slicer: (paths)=>{
             return (state)=>{
                 let subset = {}
                 paths.forEach((path) => {
-                    if(path==='login'){
+                    if(path==='user'){
                         subset[path] = {}
-                        subset[path]['user'] = state[path]['user']
+                        subset[path]['info'] = state[path]['info']
                     }else{
                         subset[path] = state[path]
                     }
@@ -29,7 +29,7 @@ const enhancer = compose(
     })
 )
 
-const reducer = combineReducers({login})
+const reducer = combineReducers({user})
 
 const store = createStore(reducer, enhancer);
 

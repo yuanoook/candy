@@ -6,7 +6,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loginSubmit(e) {
             e.preventDefault()
-            if (this.props.login.ing) return
+            if (this.props.user.log_ing) return
 
             const email = this.email_input.value
             const password = this.password_input.value
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        login: state.login
+        user: state.user
     }
 }
 
@@ -41,14 +41,14 @@ let Login = React.createClass({
     },
     componentWillReceiveProps(nextProps) {
         // goBack if login success
-        nextProps.login && nextProps.login.user && this.goBack()
+        nextProps.user && nextProps.user.info && this.goBack()
     },
     shouldComponentUpdate: function(nextProps, nextState) {
-        return !(nextProps.login && nextProps.login.user)
+        return !(nextProps.user && nextProps.user.info)
     },
     render() {
         return (
-            <div className="login-section">
+            <div className="user-io-section">
                 <SubHead />
                 <form onSubmit={this.props.loginSubmit.bind(this)}>
                     <p>
@@ -61,7 +61,7 @@ let Login = React.createClass({
                     </p>
                     <p>
                         <label></label>
-                        <button type="submit" className="long-btn">{this.props.login.ing ? 'In ...' : 'Login'}</button>
+                        <button type="submit" className="long-btn">{this.props.user.log_ing ? 'In ...' : 'Login'}</button>
                     </p>
                 </form>
             </div>

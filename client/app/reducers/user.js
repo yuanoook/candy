@@ -1,7 +1,7 @@
 const defaultState = {
-    ing: false,
-    error: null,
-    user: null,
+    log_ing: false,
+    log_error: null,
+    info: null,
 
     out_ing: false,
     out_error: null,
@@ -10,31 +10,31 @@ const defaultState = {
     reg_error: null
 }
 
-const login = (state=defaultState, action)=>{
-    let user, error
+const user = (state=defaultState, action)=>{
+    let info, error
 
     switch (action.type) {
 
     //handle login
     case 'LOGIN_PENDING':
         return Object.assign({}, state, {
-            ing: true,
-            error: null,
-            user: null
+            log_ing: true,
+            log_error: null,
+            info: null
         })
     case 'LOGIN_FULFILLED':
         error = action.payload ? action.payload.err : 'Unknown Error'
-        user = !error ? action.payload : null
+        info = !error ? action.payload : null
         return Object.assign({}, state, {
-            ing: false,
-            error: error,
-            user: user
+            log_ing: false,
+            log_error: error,
+            info: info
         })
     case 'LOGIN_REJECTED':
         return Object.assign({}, state, {
-            ing: false,
-            error: action.payload && action.payload.toString(),
-            user: null
+            log_ing: false,
+            log_error: action.payload && action.payload.toString(),
+            info: null
         })
 
     //handle logout
@@ -47,13 +47,13 @@ const login = (state=defaultState, action)=>{
         return Object.assign({}, state, {
             out_ing: false,
             out_error: error,
-            user: null
+            info: null
         })
     case 'LOGOUT_REJECTED':
         return Object.assign({}, state, {
             out_ing: false,
             out_error: action.payload && action.payload.toString(),
-            user: null
+            info: null
         })
 
     //handle register
@@ -61,21 +61,21 @@ const login = (state=defaultState, action)=>{
         return Object.assign({}, state, {
             reg_ing: true,
             reg_error: null,
-            user: null
+            info: null
         })
     case 'REGISTER_FULFILLED':
         error = action.payload ? action.payload.err : 'Unknown Error'
-        user = !error ? action.payload : null
+        info = !error ? action.payload : null
         return Object.assign({}, state, {
             reg_ing: false,
             reg_error: error,
-            user: user
+            info: info
         })
     case 'REGISTER_REJECTED':
         return Object.assign({}, state, {
             reg_ing: false,
             reg_error: action.payload && action.payload.toString(),
-            user: null
+            info: null
         })
 
     default:
@@ -83,4 +83,4 @@ const login = (state=defaultState, action)=>{
     }
 }
 
-export { login }
+export { user }
