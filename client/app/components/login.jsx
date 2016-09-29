@@ -53,10 +53,12 @@ let Login = React.createClass({
                 <form onSubmit={this.props.loginSubmit.bind(this)}>
                     <p>
                         <label>Email</label>
-                        <input type="email" name="email" required ref={(c) => this.email_input = c}/></p>
+                        <input type="email" required ref={(c) => this.email_input = c}/>
+                    </p>
                     <p>
                         <label>Password</label>
-                        <input type="password" name="password" required ref={(c) => this.password_input = c}/></p>
+                        <input type="password" required ref={(c) => this.password_input = c}/>
+                    </p>
                     <p>
                         <label></label>
                         <button type="submit" className="long-btn">{this.props.login.ing ? 'In ...' : 'Login'}</button>

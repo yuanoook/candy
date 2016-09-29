@@ -40,11 +40,11 @@ let Head = React.createClass({
                         : <a href="javascript:;" onClick={this.props.logoutSubmit.bind(this)}>Logout</a>
                     }
                     </li>
-                    <li><Link to="/user">{this.props.login.user.name}</Link></li>
+                    <li><span>{this.props.login.user.name}</span></li>
                 </ul>
             :   <ul className="head-nav-section">
-                    <li><Link to="/login">login</Link></li>
-                    <li><Link to="/register">register</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Register</Link></li>
                 </ul>
     }
 })

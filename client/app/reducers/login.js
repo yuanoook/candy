@@ -4,7 +4,10 @@ const defaultState = {
     user: null,
 
     out_ing: false,
-    out_error: null
+    out_error: null,
+
+    reg_ing: false,
+    reg_error: null
 }
 
 const login = (state=defaultState, action)=>{
@@ -50,6 +53,28 @@ const login = (state=defaultState, action)=>{
         return Object.assign({}, state, {
             out_ing: false,
             out_error: action.payload && action.payload.toString(),
+            user: null
+        })
+
+    //handle register
+    case 'REGISTER_PENDING':
+        return Object.assign({}, state, {
+            reg_ing: true,
+            reg_error: null,
+            user: null
+        })
+    case 'REGISTER_FULFILLED':
+        error = action.payload ? action.payload.err : 'Unknown Error'
+        user = !error ? action.payload : null
+        return Object.assign({}, state, {
+            reg_ing: false,
+            reg_error: error,
+            user: user
+        })
+    case 'REGISTER_REJECTED':
+        return Object.assign({}, state, {
+            reg_ing: false,
+            reg_error: action.payload && action.payload.toString(),
             user: null
         })
 
