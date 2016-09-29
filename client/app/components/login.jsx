@@ -33,6 +33,18 @@ const mapStateToProps = (state) => {
 }
 
 var Login = React.createClass({
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
+    goBack(e) {
+        window.history.length ? this.context.router.goBack() : this.context.router.push('/')
+    },
+    componentWillReceiveProps(nextProps) {
+        nextProps.login && nextProps.login.user && this.goBack()
+    },
+    shouldComponentUpdate: function(nextProps, nextState) {
+        return !(nextProps.login && nextProps.login.user)
+    },
     render() {
         return (
             <div className="login-section">
