@@ -43,8 +43,8 @@ let Head = React.createClass({
                     <li><span>{this.props.user.info.name}</span></li>
                 </ul>
             :   <ul className="head-nav-section">
-                    <li><Link to="/login">Login</Link></li>
                     <li><Link to="/register">Register</Link></li>
+                    <li><Link to="/login">Login</Link></li>
                 </ul>
     }
 })
