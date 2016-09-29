@@ -2,7 +2,7 @@ import { compose, createStore, combineReducers, applyMiddleware } from 'redux'
 import persistState from 'redux-localstorage'
 import promiseMiddleware from 'redux-promise-middleware'
 // import { list, article, user } from './reducers'
-import { user } from './reducers'
+import { list, user } from './reducers'
 
 const enhancer = compose(
     applyMiddleware(
@@ -29,7 +29,7 @@ const enhancer = compose(
     })
 )
 
-const reducer = combineReducers({user})
+const reducer = combineReducers({ list, user })
 
 const store = createStore(reducer, enhancer);
 

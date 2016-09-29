@@ -1,3 +1,3 @@
-// export * from './list'
+export * from './list'
 // export * from './article'
 export * from './user'
