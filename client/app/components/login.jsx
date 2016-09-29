@@ -48,6 +48,9 @@ var Login = React.createClass({
                         <label></label>
                         <button type="submit" className="long-btn">Login{this.props.login.ing ? ' ...' : ''}</button>
                     </p>
+                    <p style={{color:this.props.login.error?'red':'green'}}>{
+                        this.props.login.ed ? (this.props.login.error || 'Login Success') : ''
+                    }</p>
                 </form>
             </div>
         )

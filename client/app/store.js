@@ -8,7 +8,25 @@ const enhancer = compose(
     applyMiddleware(
         promiseMiddleware()
     ),
-    persistState()
+    persistState([
+        'login'
+    ], {
+        key: 'redux-loc',
+        slicer: (paths)=>{
+            return (state)=>{
+                let subset = {}
+                paths.forEach((path) => {
+                    if(path==='login'){
+                        subset[path] = {}
+                        subset[path]['user'] = state[path]['user']
+                    }else{
+                        subset[path] = state[path]
+                    }
+                })
+                return subset
+            }
+        }
+    })
 )
 
 const reducer = combineReducers({login})
