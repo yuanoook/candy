@@ -34,7 +34,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      '/login': {
+      '/(login|logout|post|register)': {
         target: 'https://candy.yuanoook.com',
         secure: false,
         onProxyReq(proxyReq, req, res) {

@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-var Login = React.createClass({
+let Login = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },
@@ -40,6 +40,7 @@ var Login = React.createClass({
         window.history.length ? this.context.router.goBack() : this.context.router.push('/')
     },
     componentWillReceiveProps(nextProps) {
+        // goBack if login success
         nextProps.login && nextProps.login.user && this.goBack()
     },
     shouldComponentUpdate: function(nextProps, nextState) {
@@ -49,7 +50,7 @@ var Login = React.createClass({
         return (
             <div className="login-section">
                 <SubHead />
-                <form onSubmit={this.props.loginSubmit.bind(this) } ref={(c) => this.form = c}>
+                <form onSubmit={this.props.loginSubmit.bind(this)}>
                     <p>
                         <label>Email</label>
                         <input type="email" name="email" required ref={(c) => this.email_input = c}/></p>
@@ -58,11 +59,8 @@ var Login = React.createClass({
                         <input type="password" name="password" required ref={(c) => this.password_input = c}/></p>
                     <p>
                         <label></label>
-                        <button type="submit" className="long-btn">Login{this.props.login.ing ? ' ...' : ''}</button>
+                        <button type="submit" className="long-btn">{this.props.login.ing ? 'In ...' : 'Login'}</button>
                     </p>
-                    <p style={{color:this.props.login.error?'red':'green'}}>{
-                        this.props.login.ed ? (this.props.login.error || 'Login Success') : ''
-                    }</p>
                 </form>
             </div>
         )
