@@ -6,21 +6,21 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loginSubmit(e) {
             e.preventDefault()
-            if (this.props.login.ing) {
-                return
-            }
+            if (this.props.login.ing) return
 
             const email = this.email_input.value
             const password = this.password_input.value
 
             dispatch({
                 type: 'LOGIN',
-                payload: {
-                    promise: fetch('/login', {
-                        method: 'POST',
-                        body: `email=${email}&password=${password}`
-                    })
-                }
+                payload: fetch('/login', {
+                    method: 'POST',
+                    body: `email=${email}&password=${password}`
+                })
+                .then((response)=>{
+                    if(response.status >= 200 && response.status < 300) return response.json()
+                    throw new Error(`${response.status} ${response.statusText}`)
+                })
             })
         }
     }

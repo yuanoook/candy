@@ -10,6 +10,7 @@ const login = (state=defaultState, action)=>{
             ing: true
         })
     case 'LOGIN_FULFILLED':
+        console.log(action)
         return Object.assign({}, state, {
             ing: false
         })
