@@ -12,9 +12,9 @@ const updateArticleInList = (list = [], _id, obj) => {
             return true
         }
     })[0]
-    return Object.assign([], list, {
-        article_index: Object.assign({}, article, obj)
-    })
+    let temp_list = {}
+    temp_list[article_index] = Object.assign({}, article, obj)
+    return Object.assign([], list, temp_list)
 }
 
 const list = (state = defaultState, action) => {
