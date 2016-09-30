@@ -45,7 +45,7 @@ const list = (state = defaultState, action) => {
             })
 
         //handle list
-        case 'ARTICLE_PENDING':console.log(action)
+        case 'ARTICLE_PENDING':
             return Object.assign({}, state, {
                 info: updateArticleInList(state.info, action.meta._id, {
                     detail_loaded: false,
@@ -53,7 +53,7 @@ const list = (state = defaultState, action) => {
                     detail_error: null
                 })
             })
-        case 'ARTICLE_FULFILLED':console.log(action)
+        case 'ARTICLE_FULFILLED':
             error = action.payload ? action.payload.err : 'Unknown Error'
             error = !error ? (action.payload[0] ? action.payload.err : 'Unknown Error') : error
             article = !error ? action.payload[0] : null
@@ -68,7 +68,7 @@ const list = (state = defaultState, action) => {
                     },article)
                 )
             })
-        case 'ARTICLE_REJECTED':console.log(action)
+        case 'ARTICLE_REJECTED':
             return Object.assign({}, state, {
                 info: updateArticleInList(
                     state.info,
