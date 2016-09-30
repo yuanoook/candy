@@ -1,3 +1,3 @@
-#candy.yuanoook.com
+# Rebuild candy.yuanoook.com
 ##Candy Notes
 ##Coding with React&Redux
