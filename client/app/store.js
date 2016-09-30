@@ -9,7 +9,8 @@ const enhancer = compose(
         promiseMiddleware()
     ),
     persistState([
-        'user'
+        'user',
+        'list'
     ], {
         key: 'redux-loc',
         slicer: (paths)=>{
