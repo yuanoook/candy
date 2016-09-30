@@ -1,6 +1,7 @@
 import React from 'react'
 import { SubHead } from './subhead'
 import { connect } from 'react-redux'
+import { autoheightTextarea as Textarea } from './utilities/autoheight-textarea'
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -51,16 +52,35 @@ let Article = React.createClass({
         !this.props.article.detail_loaded && this.props.loadArticle.call(this)
     },
     render() {
+        let details = Object.keys(this.props.article).map((key)=>{
+            switch ( key.split('_')[0] ) {
+                //handle detail
+                case 'title':
+                    return  <p className="article-title" key={key}>
+                                <input type="text" placeholder="Type your title" defaultValue={this.props.article[key]} disabled />
+                            </p>
+                case 'text':
+                    return  <p className="article-text" key={key}>
+                                <Textarea placeholder="Type your text" defaultValue={this.props.article[key]} disabled />
+                            </p>
+                case 'topublic':
+                    return  <p className="article-tags" key={key}>
+                                Tags: {
+                                    this.props.article[key].map(
+                                        (tag,index)=> <input key={index} defaultValue={tag} disabled />
+                                    )
+                                }
+                            </p>
+                default:
+                    return null
+            }
+        })
+
         return (
             <section  className="article-detail-section">
                 <SubHead />
                 <div>
-                    <p className="article-title">
-                        <input type="text" placeholder="Type your title" defaultValue={this.props.article.title_1}/>
-                    </p>
-                    <p className="article-text">
-                        <textarea placeholder="Type your text" defaultValue={this.props.article.text_1}></textarea>
-                    </p>
+                    {details}
                 </div>
             </section>
         )
