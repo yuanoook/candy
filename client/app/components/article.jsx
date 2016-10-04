@@ -1,7 +1,7 @@
 import React from 'react'
 import { SubHead } from './subhead'
 import { connect } from 'react-redux'
-import { autoheightTextarea as Textarea } from './utilities/autoheight-textarea'
+import Textarea from 'react-autoheight-textarea'
 
 const mapDispatchToProps = (dispatch) => {
     return {
